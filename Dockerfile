@@ -17,8 +17,8 @@ FROM ubuntu:14.04
 # File Author / Maintainer
 MAINTAINER John D. Swanson
 
-# Update the repository sources list, install wget, and run updates
-RUN apt-get update && apt-get install wget -y && apt-get dist-upgrade -y
+# Update the repository sources list, install wget and software-properties-common, and run updates
+RUN apt-get update && apt-get install wget software-properties-common -y && apt-get dist-upgrade -y
 
 # Add the MineMeld Repo GPG Key
 RUN wget -qO - https://minemeld-updates.panw.io/gpg.key | sudo apt-key add -
