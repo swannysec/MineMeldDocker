@@ -1,0 +1,32 @@
+############################################################
+# Dockerfile to build Palo Alto Networks MineMeld
+# Based on Ubuntu 14.04
+# Instructions:
+# Build with the following commands:
+# sudo docker build -t MineMeld
+# sudo docker run -itd -p 8880:80 4443:443 13514 MineMeld
+# Change the admin password:
+# sudo docker exec -it MineMeld sudo htpasswd /opt/minemeld/local/config/wsgi.htpasswd admin
+# The Web UI will be available on https://<address>:4443
+############################################################
+
+# Set the base image to Ubuntu 14.04
+FROM ubuntu:14.04
+
+# File Author / Maintainer
+MAINTAINER John D. Swanson
+
+# Add the MineMeld Repo GPG Key
+RUN wget -qO - https://minemeld-updates.panw.io/gpg.key | sudo apt-key add -
+
+# Add the MineMeld APT Repo
+RUN sudo add-apt-repository "deb http://minemeld-updates.panw.io/ubuntu trusty-minemeld main"
+
+# Update the repository sources list
+RUN apt-get update && apt-get dist-upgrade -y
+
+# Install MineMeld
+RUN sudo apt-get update && sudo apt-get install -y minemeld rsyslog-minemeld rsyslog-mmnormalize apache2-utils
+
+# Expose Ports
+EXPOSE 22 80 443 13514
