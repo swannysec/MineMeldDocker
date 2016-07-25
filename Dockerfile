@@ -17,17 +17,17 @@ FROM ubuntu:14.04
 # File Author / Maintainer
 MAINTAINER John D. Swanson
 
+# Update the repository sources list, install wget, and run updates
+RUN apt-get update && apt-get install wget && apt-get dist-upgrade -y
+
 # Add the MineMeld Repo GPG Key
 RUN wget -qO - https://minemeld-updates.panw.io/gpg.key | sudo apt-key add -
 
 # Add the MineMeld APT Repo
-RUN sudo add-apt-repository "deb http://minemeld-updates.panw.io/ubuntu trusty-minemeld main"
-
-# Update the repository sources list
-RUN apt-get update && apt-get dist-upgrade -y
+RUN add-apt-repository "deb http://minemeld-updates.panw.io/ubuntu trusty-minemeld main"
 
 # Install MineMeld
-RUN sudo apt-get update && sudo apt-get install -y minemeld rsyslog-minemeld rsyslog-mmnormalize apache2-utils
+RUN apt-get update && apt-get install -y minemeld rsyslog-minemeld rsyslog-mmnormalize apache2-utils
 
 # Expose Ports
 EXPOSE 22 80 443 13514
