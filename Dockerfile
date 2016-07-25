@@ -24,7 +24,7 @@ RUN apt-get update && apt-get install wget -y && apt-get dist-upgrade -y
 RUN wget -qO - https://minemeld-updates.panw.io/gpg.key | sudo apt-key add -
 
 # Add the MineMeld APT Repo
-RUN add-apt-repository "deb http://minemeld-updates.panw.io/ubuntu trusty-minemeld main"
+RUN sudo add-apt-repository "deb http://minemeld-updates.panw.io/ubuntu trusty-minemeld main"
 
 # Install MineMeld
 RUN apt-get update && apt-get install -y minemeld rsyslog-minemeld rsyslog-mmnormalize apache2-utils
