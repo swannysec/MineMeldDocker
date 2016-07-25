@@ -33,4 +33,4 @@ RUN apt-get update && apt-get install -y minemeld rsyslog-minemeld rsyslog-mmnor
 
 # Expose Ports and Set CMD
 EXPOSE 22 80 443 13514
-CMD ["/opt/minemeld/engine/current/bin/supervisord"]
+CMD ["/opt/minemeld/engine/current/bin/supervisord -c /opt/minemeld/local/supervisor/config/supervisord.conf"]
