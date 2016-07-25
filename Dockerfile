@@ -31,5 +31,6 @@ RUN sudo add-apt-repository "deb http://minemeld-updates.panw.io/ubuntu trusty-m
 # Install MineMeld
 RUN apt-get update && apt-get install -y minemeld rsyslog-minemeld rsyslog-mmnormalize apache2-utils
 
-# Expose Ports
+# Expose Ports and Set CMD
 EXPOSE 22 80 443 13514
+CMD ["/opt/minemeld/engine/current/bin/supervisord"]
