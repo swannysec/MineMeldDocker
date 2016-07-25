@@ -10,9 +10,13 @@
 
 * Change the admin password:
 
-> sudo docker exec -it swannysec:MineMeld sudo htpasswd /opt/minemeld/local/config/wsgi.htpasswd admin
+Get the Container ID first:
 
-> sudo docker exec -it swannysec:MineMeld sudo -u minemeld /opt/minemeld/engine/current/bin/supervisorctl -c /opt/minemeld/local/supervisor/config/supervisord.conf restart minemeld-web
+> sudo docker ps
+
+> sudo docker exec -it CONTAINER htpasswd /opt/minemeld/local/config/wsgi.htpasswd admin
+
+> sudo docker exec -it CONTAINER sudo -u minemeld /opt/minemeld/engine/current/bin/supervisorctl -c /opt/minemeld/local/supervisor/config/supervisord.conf restart minemeld-web
 
 * The Web UI will be available on https://address:4443
 
