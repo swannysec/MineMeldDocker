@@ -1,7 +1,9 @@
 # MineMeldDocker
-####Simple Dockerfile for Palo Alto Networks MineMeld
+#### Simple Dockerfile for Palo Alto Networks MineMeld
 
-##Instructions:
+#### Note: This is broken at the moment.  Problem has to do with supervisor and/or use of unix sockets.
+
+## Instructions:
 * Build with the following commands:
 
 > sudo docker build -t swannysec:MineMeld github.com/swannysec/MineMeldDocker
