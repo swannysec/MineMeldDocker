@@ -6,7 +6,7 @@
 
 > sudo docker build -t swannysec:MineMeld github.com/swannysec/MineMeldDocker
 
-> sudo docker run -itd -p 8880:80 4443:443 13514 swannysec:MineMeld
+> sudo docker run -itd -p 8880:80 -p 4443:443 -p 13514 swannysec:MineMeld
 
 * Change the admin password:
 
